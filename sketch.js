@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-const Constraint = Matter.constraint;
+const Constraint = Matter.Constraint;
 
 var boy,boyImage;
 var tree,treeImage;
@@ -14,8 +14,8 @@ var sling;
 
 function preload()
 {
-	boyImage = loadImage("PluckingMangoes/boy.png");
-	treeImage = loadImage("PluckingMangoes/tree.png");
+	boyImage = loadImage("boy.png");
+	treeImage = loadImage("tree.png");
 
 }
 
@@ -42,7 +42,7 @@ function setup() {
   ground = new Ground(0,680,1600,10);
   stone = new Stone(133,550,40,40);
 
-  sling = new SlingShot(stone.body,{x:200, y:50});
+  sling = new SlingShot(stone.body,{x:133, y:550});
 
   
 
@@ -52,8 +52,9 @@ function setup() {
 
 
 function draw() {
-  rectMode(CENTER);
+  
   background(255);
+  Engine.update(engine);
   image(boyImage,100,500,170,200);
   image(treeImage,500,140,300,550);
 
@@ -75,7 +76,7 @@ function draw() {
   sling.display();
 
   
-  drawSprites();
+ 
  
 }
 
